@@ -1,0 +1,100 @@
+@import "/_variables";
+@import "/utils/_scrollbar";
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap');
+@import "@/styles/utils/_arrows.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+html {
+    font-size: 62.5%;
+}
+.img-wrapper {
+    position: relative;
+}
+.img-wrapper img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor:pointer;
+}
+a{
+    color: inherit;
+    text-decoration: inherit;
+}
+#view-wrapper{
+    margin: auto;
+}
+//status
+.paid{
+    background-color: $bg-paid;
+    .bold{
+        color: $color-paid;
+    }
+}
+.pending{
+    background-color: $bg-pending;
+    .bold{
+        color: $color-pending;
+    }
+}
+.draft{
+    background-color: $bg-draft;
+    .bold{
+        color: $color-draft;
+    }
+}
+  //Utils
+.bold{
+    font-weight: bold;
+    color: $color-dark-title;
+}
+  //Code 
+body{
+    color: $color-dark-text;
+    background-color: $bg-dark-secondary;
+    font-size: 1.2rem;
+    letter-spacing: -0.25px;
+    .page-wrapper{
+        position: absolute;
+        width: map-get($widths, sm );
+        left: 0;
+        right: 0;
+        margin: auto;
+        padding-top: 110px;
+        @include media-up(md) {
+            width: map-get($widths, md);
+            padding-top: 135px;
+        }
+        @include media-up(lg) {
+            padding-top: 75px;
+            width: map-get($widths, lg);
+        }
+    }
+}
+.page-enter-active,
+.page-leave-active{
+    transition: 0.3s ease-out;
+}
+
+button{
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+#bg-blur{
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

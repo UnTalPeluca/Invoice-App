@@ -1,0 +1,39 @@
+@import "../_variables";
+
+#invoice-empty{
+    text-align: center;
+    .img-wrapper{
+        height: 160px;
+        @include media-up(md) {
+            height: 200px;
+        }
+        img{
+            height: 100%;
+            cursor: auto;
+        }
+    }
+    p{
+        line-height: 1.5rem;
+        @include media-up(md) {
+            width: 224px;
+            margin: auto;
+        }
+    }
+    .bold{
+        font-size: 2rem;
+        letter-spacing: -0.63px;
+        padding-top: 40px;
+        padding-bottom: 24px;
+        @include media-up(md) {
+            padding-top: 60px;
+        }
+    }
+}
+.empty-fade-enter-from,
+.empty-fade-leave-to{
+    opacity: 0;
+}
+.empty-fade-enter-active,
+.empty-fade-leave-active{
+    transition: 0.5s ease-out;
+}

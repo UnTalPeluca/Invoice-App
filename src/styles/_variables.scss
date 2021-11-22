@@ -1,0 +1,74 @@
+//**Breakpoints
+$breakpoints:(
+  sm: 375px,
+  md: 768px,
+  lg: 1024px,
+);
+$widths:(
+  sm: 375px,
+  md: clamp(575px, 80vw, 672px),
+  lg: clamp(672px, 70vw, 810px)
+);
+
+
+
+@mixin media-up($breakpoint) {
+  @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+//**Colors
+$primary-color:#7C5DFA;
+$primary-color-shiny:#9277FF;
+$color-paid:rgba(51, 214, 159, 1);
+$color-pending:rgba(255, 143, 0, 1);
+$color-draft:rgba(223, 227, 250, 1);
+$slightly-desaturated-blue:#7e88c3;
+  //Light
+  $color-light-title:#0C0E16;
+  $color-light-text:#888EB0;
+  $color-light-name:#858BB2;
+  //Dark
+  $color-dark-title:#FFFFFF;
+  $color-dark-text:#DFE3FA;
+  $color-dark-name:#FFFFFF;
+//**Backgrounds
+$bg-paid:rgba(51, 214, 159, 0.05);
+$bg-pending:rgba(255, 143, 0, 0.05);
+$bg-draft:rgba(223, 227, 250, 0.05);
+  //Light
+  $bg-light-primary:#F8F8FB;
+  $bg-light-secondary:#FFFFFF;
+  $bg-light-paydetails:#F9FAFE;
+  $bg-light-paytotal:#373B53;
+  //Dark
+  $bg-dark-primary:#1E2139;
+  $bg-dark-secondary:#141625;
+  $bg-dark-paydetails:#252945;
+  $bg-dark-paytotal:#0C0E16;
+//**Border
+  $border-color:#494E6E;
+//**Button colors
+$btn-purple:#7C5DFA;
+$btn-purple-hover:#9277FF;
+$btn-red:#EC5757;
+$btn-red-hover:#FF9797;
+$btn-dark:#252945;
+$btn-dark-hover:#FFFFFF;
+//**Sizes
+  //Header
+  $header-sm: 72px;
+  $header-md: 80px;
+  $header-lg: 103px;
+  $pd-top: 20px;
+  //Form
+  $formHeight:(
+    sm:calc(100vh - $header-sm),
+    md:calc(100vh - $header-md),
+    lg:calc($header-md + 25px)
+  );
+  $formWidth:(
+    sm: 375px,
+    md: 616px,
+    lg: 720px
+  );

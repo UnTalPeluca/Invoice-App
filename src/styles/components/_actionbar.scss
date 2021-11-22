@@ -1,0 +1,145 @@
+@import "../_variables";
+@import "../utils/checkbox";
+#action-bar,
+#left-header,
+#filter,
+#new{
+    display: flex;
+}
+#action-bar{
+    position: relative;
+    justify-content: space-between;
+    height: 45px;
+    @include media-up(lg){
+        height: 60px;
+    }
+    p{
+        letter-spacing: -0.25px;
+    }
+}
+#left-header{
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    .bold{
+        font-size: 2rem;
+        letter-spacing: -0.63px;
+        @include media-up(lg){
+            font-size: 3.2rem;
+            line-height: auto;
+        }
+    }
+    p{
+        span{
+            &:nth-child(1){
+                @include media-up(md){
+                    &::before{
+                        content:"There are"; 
+                    }
+                    &.empty{
+                        &::before{
+                            content: "";
+                        }
+                    }
+                }
+            }
+            &:nth-child(3){
+                @include media-up(md){
+                    &::before{
+                        content: "total";
+                    }
+                    &.empty{
+                        &::before{
+                            content: "";
+                        }
+                    }
+                    &.pending{
+                        &::before{
+                            content: "pending";
+                        }
+                    }
+                    &.draft{
+                        &::before{
+                            content: "draft";
+                        }
+                    }
+                    &.paid{
+                        &::before{
+                            content: "paid";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#filter{
+    align-items: center;
+    cursor: pointer;
+    margin-left: auto;
+    padding-right: 20px;
+    @include media-up(md) {
+        padding-right: 40px;
+    }
+    p{
+        padding-right: 10px;
+        @include media-up(md) {
+            &::after{
+                content: " by status";
+            }
+        }
+    }
+}
+#new{
+    align-items: center;
+    background-color: $primary-color;
+    width: 90px;
+    border-radius: 24px;
+    cursor: pointer;
+    border-radius: 100px;
+    height: 44px;
+    @include media-up(md){
+        width: 150px;
+        height: 48px;
+    }
+    &:hover{
+        background-color: $primary-color-shiny;
+    }
+    .img-wrapper{
+        width: 32px;
+        height: 32px;
+        background-color: #FFFFFF;
+        border-radius: 100px;
+        margin: 0 8px 0 6px;
+        @include media-up(lg){
+            margin: 0 8px;
+        }
+    }
+    .bold{
+        @include media-up(md){
+            padding-left: 10px;
+            &::after{
+                content:" invoice"
+            }
+        }
+    }
+}
+#filter-nav{
+    position: relative;
+    ul{
+        background-color: $bg-dark-primary;
+        list-style-type: none;
+        position: absolute;
+        z-index: 1;
+        left: -140px;
+        bottom: -140px;
+        box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.25);
+        margin: auto;
+        padding: 20px 20px;
+        width: 192px;
+        border-radius: 6px;
+        height: 128px;
+        font-size: 1.2rem;
+    }
+}
+

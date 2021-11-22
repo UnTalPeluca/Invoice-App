@@ -1,0 +1,315 @@
+@import "../_variables";
+
+#invoice-details{
+    padding-bottom: 150px;
+    @include media-up(md) {
+        padding-bottom: 50px;
+    }
+}
+
+//Buttons
+button{
+    color: white;
+    cursor: pointer;
+    :active{
+        outline: none;
+        border: none;
+    }
+    &.edit{
+        background-color: $btn-dark;
+        &:hover{
+            background-color: $btn-dark-hover;
+            color: $color-dark-text;
+        }
+    }
+    &.delete{
+        background-color: $btn-red;
+        &:hover{
+            background-color: $btn-red-hover;
+        }
+    }
+    &.mark{
+        background-color: $btn-purple;
+        &:hover{
+            background-color: $btn-purple-hover;
+        }
+    }
+}
+
+//go-back
+.back{
+    cursor: pointer;
+    width: 90px;
+    .bold{
+        padding-left: 25px;
+    }
+}
+
+//Status Section
+.status-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $bg-dark-primary;
+    margin-top: 32px;
+    padding: 25px;
+    border-radius: 8px;
+    @include media-up(md) {
+        padding: 25px 32px;
+        >p{
+            color: $color-light-name;
+        }
+    }
+    .state{
+        width: 104px;
+        height: 40px;
+        grid-area: state;
+        border-radius: 6px;
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+        @include media-up(md) {
+            margin-left: 25px;
+            margin-right: auto;
+        }
+        .bold{
+            position: relative;
+            padding-left: 15px;
+            &::before{
+                color: inherit;
+                position: absolute;
+                content: "•";
+                font-size: 2.5rem;
+                left: -5px;
+                top: -7px;
+            }
+            &::first-letter{
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+//Invoice Details Section
+.invoice-details {
+    margin-top: 16px;
+    border-radius: 8px;
+    padding: 25px;
+    background-color: $bg-dark-primary;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 40px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "from from"
+    "date to"
+    "email email"
+    "amount amount"
+    ;
+    @include media-up(md) {
+        padding: 30px;
+        margin-top: 26px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 40px;
+        grid-template-areas:
+        "from from from"
+        "date to email"
+        "amount amount amount"
+        ;
+    }
+    @include media-up(md) {
+        padding: 48px;
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+    }
+    .from { 
+        grid-area: from;
+        gap: 30px;
+        justify-content: space-between;
+        @include media-up(md) {
+            flex-direction: row;
+        }
+        .header{
+            .id{
+                padding-bottom: 8px;
+                @include media-up(md) {
+                    font-size: 16px;
+                }
+                &::before{
+                    content: "#";
+                    color: $slightly-desaturated-blue;
+                }
+                
+            }
+        }
+        .from-address{
+            gap: 5px;
+            p{
+                text-decoration:underline;
+                @include media-up(md) {
+                    text-align: end;
+                }
+            }
+        }
+    }
+    .date { 
+        grid-area: date; 
+        justify-content: space-between;
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .bold{
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .email {
+        grid-area: email;
+        gap: 15px;
+        .bold{
+            font-size: 1.5rem;
+        }
+    }
+    .bill-to {
+        grid-area: to;
+        justify-content: space-between;
+        .header{
+            display: flex;
+            gap: 15px;
+            .bold{
+                font-size: 1.5rem;
+            }
+        }
+        .to-address{
+            gap: 5px; 
+        }
+    }
+    .amount{
+        grid-area:amount;
+        background-color: $bg-dark-paydetails;
+        border-radius: 8px;
+        .list{
+            display: none;
+            padding: 32px 32px 20px 32px;
+            @include media-up(md) {
+                @include media-up(md) {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr 1fr 1fr;
+                    grid-template-rows: auto;
+                    .quantity{
+                        text-align: center;
+                    }
+                    .price,
+                    .total-price{
+                        text-align: end;
+                    }
+                }
+            }
+        }
+        .items{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            @include media-up(md) {
+                padding: 18px 32px;
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                grid-template-rows: auto;
+                .quantity{
+                    display: inline!important;
+                    text-align: center!important;
+                    &::before{
+                        content: "";
+                    }
+                }
+                .price{
+                    display: inline!important;
+                    text-align: end!important;
+                }
+                .total-price{
+                    text-align: end;
+                }
+            }
+            .quantity,
+            .price{
+                display: none;
+            }
+            .item{
+                gap: 10px;
+                p:last-child{
+                    color: $slightly-desaturated-blue;
+                    @include media-up(md) {
+                        display: none;
+                    }
+                    span::before{
+                        content: " x £ ";
+                    }
+                }
+            }
+            > p::before{
+                content: "£ ";
+            }
+        }
+        .total{
+            background-color: $bg-dark-paytotal;
+            padding: 25px;
+            border-radius: 0 0 8px 8px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            @include media-up(md) {
+                margin-top: 20px;
+            }
+            .bold{
+                font-size: 2rem;
+                &::before{
+                    content: "£ ";
+                }
+                @include media-up(md) {
+                    font-size: 2.4rem;
+                }
+            }
+        }
+    }
+}
+
+//Footer
+.action-footer{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: red;
+    padding: 25px;
+    background-color: $bg-dark-primary;
+    z-index: 1;
+    @include media-up(md) {
+        display: none;
+    }
+}
+.action-btns{
+    button{
+        padding: 16px 24px;
+        border-radius: 24px;
+        border: none;
+        @include media-up(md) {
+            margin: 0 5px;
+        }
+    }
+}
+.action-header{
+    display: none;
+    @include media-up(md) {
+        margin: 0 5px;
+        display: block;
+    }
+}

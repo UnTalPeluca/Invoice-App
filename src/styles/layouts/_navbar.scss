@@ -1,0 +1,88 @@
+@import "../_variables";
+#nav-bar{
+    background-color: #1E2139;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    @include media-up(md) {
+        height: $header-md;
+    }
+    @include media-up(lg) {
+        left: 0;
+        flex-direction: column;
+        height: 100%;
+        width: auto;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+}
+#logo {
+    background-color: $primary-color;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    img{
+        width: 31px;
+        height: 31px;
+    }
+    &::before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 72px;
+        height: 72px;
+        background-color: $primary-color-shiny;
+        border-top-left-radius: 20px;
+        @include media-up(md) {
+            height: $header-md;
+            width: $header-md;
+        }
+        @include media-up(lg) {
+            height: $header-lg;
+            width: $header-lg;
+        }
+    }
+}
+.img-wrapper{
+    width: 72px;
+    height: 72px;
+    @include media-up(md) {
+        height: 80px!important;
+        width: 80px!important;
+    }
+    @include media-up(lg) {
+        height: $header-lg!important;
+        width: $header-lg!important;
+    }
+    &:nth-child(2){
+        margin-left: auto;
+        @include media-up(lg) {
+            margin-left: 0;
+            margin-top: auto;
+        }
+    }
+    &:nth-child(3){
+        border-left: 1px solid $border-color;
+        width: 80px;
+        @include media-up(md) {
+
+        }
+        @include media-up(lg) {
+            width: 72px;
+            border-left: none;
+            border-top: 1px solid $border-color;
+        }
+        img{
+            height: 32px;
+            width: 32px;
+            border-radius: 100px;
+            @include media-up(lg) {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}

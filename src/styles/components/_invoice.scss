@@ -1,0 +1,109 @@
+@import "../_variables";
+.invoice{
+    cursor: pointer;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    height: 134px;
+    background-color: $bg-dark-primary;
+    padding: 24px;
+    border-radius: 8px;
+    grid-template-areas: 
+    "code name"
+    "date state"
+    "amount state";
+    @include media-up(md){
+        display: grid; 
+        grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 20px; 
+        grid-template-rows: 1fr; 
+        grid-template-areas: "code date name amount state arrow";
+        height: auto;
+        > * {
+            align-self: center!important;
+            margin: 0!important;
+        }
+    }
+    p:nth-child(1){
+        grid-area: code;
+        position: relative;
+        &::before{
+            content: "#";
+            color: $slightly-desaturated-blue;
+        }
+    }
+    p:nth-child(2){
+        grid-area: date;
+        align-self: flex-end;
+        padding-bottom: 5px;
+        span{
+            padding-left: 5px;
+        }
+        @include media-up(md){
+            text-align: start;
+            padding-bottom: 0;
+        }
+    }
+    p:nth-child(3){
+        grid-area: amount;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        letter-spacing: -0.8px;
+        margin-top: auto;
+        @include media-up(md){
+            text-align: end;
+            padding-right: 25px;
+        }
+    }
+    p:nth-child(4){
+        grid-area: name;
+        text-align: end;
+        @include media-up(md){
+            text-align: start;
+        }
+    }
+    .state{
+        width: 104px;
+        height: 40px;
+        grid-area: state;
+        border-radius: 6px;
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+        align-self: flex-end;
+        p{
+            position: relative;
+            padding-left: 15px;
+            &::before{
+                color: inherit;
+                position: absolute;
+                content: "•";
+                font-size: 2.5rem;
+                left: -5px;
+                top: -7px;
+            }
+            &::first-letter{
+                text-transform: uppercase;
+            }
+        }
+    }
+    .arrow{
+        display: none;
+        @include media-up(md) {
+            display: block;
+            grid-area: arrow;
+            justify-self: flex-end;
+
+        }
+    }
+}
+.invoice-fade-enter-from,
+.invoice-fade-leave-to{
+    opacity: 0;
+    transform: translateX(-10%);
+}
+.invoice-fade-enter-active,
+.invoice-fade-leave-active{
+    transition: 0.5s ease-out;
+}

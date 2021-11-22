@@ -1,0 +1,112 @@
+@import "../_variables";
+
+#invoice-create,
+#invoice-edit{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: $header-sm 0;
+    z-index: 1;
+    @include media-up(md) {
+        padding: $header-md 0;
+    }
+    @include media-up(lg) {
+        top: -$header-md;
+    }
+}
+//Go Back
+.back{
+    cursor: pointer;
+    padding: 25px;
+    .bold{
+        padding-left: 25px;
+    }
+    @include media-up(md) {
+        display: none;
+    }
+}
+.container{
+    width: 375px;
+    background-color: $bg-dark-secondary;
+    height: map-get($formHeight, sm);
+    position: relative;
+    overflow: hidden;
+    @include media-up(md) {
+        width: 616px;
+        height: map-get($formHeight, md);
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    @include media-up(lg) {
+        width: 720px;
+        height: 100vh;
+        padding-left: $header-lg
+    }
+    h2{
+        font-size: 2.4rem;
+        padding: 0 25px 25px 25px;
+        @include media-up(md) {
+            padding: 56px;
+        }
+        .id{
+            &::before{
+                content: "#";
+                color:$color-light-text;
+            }
+        }
+    }
+    .footer{
+        display: flex;
+        justify-content: space-between;
+        background-color: $bg-dark-primary;
+        padding: 25px;
+        left: 0;
+        min-width: 369px;
+        width: 100%;
+        @include media-up(md) {
+            padding: 25px 56px;
+            background-color: $bg-dark-secondary;
+        }
+        @include media-up(lg) {
+            padding-left: 56px;
+        }
+        button{
+            font-size: 1.2rem;
+            padding: 17px 17px;
+            @include media-up(md) {
+                padding: 17px 20px;
+            }
+            &.discard{
+                background-color: $btn-dark;
+            }
+            &.save-draft{
+                background-color: $bg-light-paytotal;
+                @include media-up(md) {
+                    margin-left: auto;
+                    margin-right: 8px;
+                }
+            }
+            &.send{
+                background-color: $primary-color;
+            }
+            &.save{
+                background-color: $primary-color;
+                margin-left: 10px;
+            }
+            &.cancel{
+                margin-left: auto;
+                background-color: $bg-dark-paydetails;
+            }
+        }
+    }
+}
+
+.fade-enter-from,
+.fade-leave-to{
+    opacity: 0.9;
+    transform: translateX(-110%);
+}
+.fade-enter-active,
+.fade-leave-active{
+    transition: 0.5s ease-out;
+}

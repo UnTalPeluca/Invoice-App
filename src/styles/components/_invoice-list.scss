@@ -1,0 +1,26 @@
+@import "../_variables";
+#invoice-list{
+    @include media-up(lg) {
+        margin-left: $header-md;
+    }
+}
+.invoice-list-wrapper{
+    padding-top: 32px;
+    @include media-up(md) {
+        padding-top: 60px;
+    }
+    > div{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        &.invoice-empty{
+            padding-top: 100px;
+            @include media-up(md) {
+                padding-top: 175px;
+            }
+            @include media-up(lg) {
+                padding-top: 60px;
+            }
+        }
+    }
+}

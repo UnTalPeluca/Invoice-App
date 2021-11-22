@@ -1,0 +1,289 @@
+@import "../_variables";
+
+
+//Input style when autocomplete
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    box-shadow: 0 0 0 35px $bg-dark-primary inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+//Form
+#invoice-form{
+    overflow-y: scroll;
+    max-height: calc((100% - 215px));
+    @include media-up(md) {
+        padding-bottom: 20px;
+        max-height: calc((100% - 215px));
+    }
+    @include media-up(md) {
+        padding-bottom: 20px;
+        max-height: calc((100% - 235px));
+    }
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 25px 50px 25px;
+    @include media-up(md) {
+        padding: 0 56px 0px 56px;
+    }
+    .item-list{
+        legend{
+            color: #777F98;
+            font-size: 1.8rem;
+            padding-top: 50px;
+            @include media-up(md) {
+                padding-top: 20px;
+            }
+        }
+        button{
+            padding: 15px;
+            background-color: $bg-dark-primary;
+            font-size: 1.2rem;
+            width: 100%;
+        }
+    }
+    fieldset{
+        border: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        legend{
+            color: $primary-color;
+            font-weight: bold;
+            padding: 28px 0;
+        }
+        &:nth-child(1){
+            legend{
+                padding-top: 0;
+            }
+        }
+        label{
+            color: #888EB0;
+            width: 100%;
+            padding-bottom: 20px;
+            position: relative;
+            &.empty-number{
+                color: $btn-red!important;
+                input{
+                    border: 1px solid $btn-red !important;
+                }
+            }
+            &.empty{
+                color: $btn-red!important;
+                input{
+                    border: 1px solid $btn-red !important;
+                }
+                &::before{
+                    content:"can't be empty";
+                    font-size: 1rem;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: $btn-red;
+                }
+            }
+            &.invalid {
+                color: $btn-red!important;
+                input{
+                    border: 1px solid $btn-red !important;
+                    color: $btn-red;
+                }
+                &::after{
+                    font-size: 1rem;
+                    content:"you must enter a valid email";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: $btn-red;
+                }
+            }
+            #to-date{
+                color: $primary-color;
+            }
+            &.label-select{
+                select{
+                    appearance: none;
+                    outline:0px;
+                    
+                }
+                i{
+                    position: absolute;
+                    right: 20px;
+                    top: 42.5px;
+                }
+            }
+            input,select{
+                display: block;
+                background-color: $bg-dark-primary;
+                border: 1px solid $bg-dark-paydetails;                
+                border-radius: 4px;
+                padding: 16px;
+                margin-top: 10px;
+                color: white;
+                width: 100%;
+                outline: none;
+                &:focus,&:active,&:hover{
+                    border: 1px solid $primary-color
+                }
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+            }
+            #to-terms{
+                cursor: pointer;
+            }
+        }
+        .option-box{
+            height: 0;
+            position: relative;
+            top: -10px;
+            z-index: 1;
+            width: 100%;
+            .wrapper{
+                background-color: $bg-dark-primary;
+                border-radius: 8px;
+                cursor: pointer;
+                p{
+                    padding: 16px;
+                    border-bottom: 1px solid rgba(0,0,0,0.15);
+                    &:hover{
+                        color: $primary-color;
+                    }
+                    &.active{
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Label Sizes
+
+label[for="from-city"],
+label[for="from-post"],
+label[for="to-city"],
+label[for="to-post"]{
+    width: 47.5%;
+    @include media-up(md) {
+        width: 30%;
+    }
+}
+label[for="from-country"],
+label[for="to-country"]{
+    @include media-up(md) {
+        width: 30%;
+    }
+}
+label[for="to-date"],
+label[for="to-terms"]{
+    width: 47.5%;
+}
+
+//Item List
+
+.list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    @include media-up(md) {
+        padding-bottom: 5px;
+        &:nth-last-child(2){
+            padding-bottom: 25px;
+        }
+    }
+    > * {
+        @include media-up(md) {
+            padding-bottom: 0;
+        }
+    }
+    &:nth-child(2){
+        label{
+            &:nth-child(1){
+                &::before{
+                    content:"Item Name"!important;    
+                }
+            }
+            &:nth-child(2){
+                &::before{
+                    content:"Qty."!important;    
+                }
+            }
+            &:nth-child(3){
+                &::before{
+                    content:"Price"!important;    
+                }
+            }
+            &:nth-child(4){
+                &::before{
+                    content:"Total"!important;    
+                }
+            }
+        }
+    }
+    .delete-item{
+        cursor: pointer;
+        
+    }
+    label{
+        &:nth-child(1){
+            &::before{
+                content:"Item Name";   
+                @include media-up(md) {
+                    content:""
+                }
+            }
+            @include media-up(md) {
+                width: 42.5%;
+            }
+        }
+        &:nth-child(2){
+            width: 20%;
+            &::before{
+                content:"Qty.";   
+                @include media-up(md) {
+                    content:""
+                }
+            }
+            @include media-up(md) {
+                width: 10%;
+            }
+        }
+        &:nth-child(3){
+            width: 30%;
+            &::before{
+                content:"Price";   
+                @include media-up(md) {
+                    content:""
+                }
+            }
+            @include media-up(md) {
+                width: 17.5%;
+            }
+        }
+        &:nth-child(4){
+            width: 35%;
+            &::before{
+                content:"Total";   
+                @include media-up(md) {
+                    content:""
+                }
+            }
+            @include media-up(md) {
+                width: 17.5%;
+            }
+            input{
+                background-color: $bg-dark-secondary;
+                border: none;
+            }
+        }
+    }
+}
