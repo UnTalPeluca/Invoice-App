@@ -38,6 +38,7 @@ export default {
         },
         saveDraft() {
             this.$store.dispatch('postInvoice', {id:uid(), data: this.$refs.ref_create_form.invoiceData, status:"draft"})
+            this.hideInvoiceCreate()
         }
     },
     computed:{

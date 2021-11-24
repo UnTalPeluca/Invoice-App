@@ -97,6 +97,9 @@
                 margin-left: auto;
                 background-color: $bg-dark-paydetails;
             }
+            &.delete{
+                background-color: $btn-red;
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 <template>
     <transition name="invoice-fade">
-        <router-link v-show="created" :to="{ name: 'InvoiceDetails', params: { id: invoiceData.id } }">
-            <div class="invoice">
+            <div @click="clickInvoice" class="invoice">
                 <p class="bold">{{ invoiceData.id }}</p>
                 <p>Due <span>{{ this.dateUtils.splitDocDate(invoiceData.data().paymentDue) }}</span></p>
                 <p class="bold">£ {{ amountDue }}</p>
@@ -11,7 +10,6 @@
                 </div>
                 <i class="arrow right"></i>
             </div>
-        </router-link>
     </transition>
 </template>
 
@@ -22,7 +20,6 @@ export default {
     data(){
         return{
             dateUtils,
-            created: false
         }
     },
     props:{
@@ -34,8 +31,16 @@ export default {
             return items.reduce((sum, { total }) => sum + total, 0)
         },
     },
-    created() {
-        setInterval(() => this.created = true, 0)
+    methods:{
+        clickInvoice() {
+            if(this.invoiceData.data().status === 'draft') {
+                this.$store.dispatch('fetchInvoice', {id:this.invoiceData.id, reload:false})
+                this.$store.dispatch('setShowEdit', true)
+            } else {
+                window.scrollTo(0, 0);
+                this.$router.push({name:'InvoiceDetails', params:{id: this.invoiceData.id}})
+            }
+        }
     }
 }
 

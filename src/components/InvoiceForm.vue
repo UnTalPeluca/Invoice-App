@@ -38,8 +38,8 @@
                 </label>
                 <label for="to-date">Invoice Date
                     <DatePicker
-                    @created="setInitialTime"
                     @getFormatDate="getDate"
+                    @initialTime="setInitialTime"
                     edit="true" 
                     ref="ref_date_picker"/>
                 </label>
@@ -154,7 +154,6 @@ export default {
             this.invoiceData.items[i].total = data.quantity * data.price
         },
         setPaymentDue() {
-            
             const date = dateUtils.onlySplitDocDate(this.invoiceData.createdAt)
             const offset = this.invoiceData.paymentTerms
             this.invoiceData.paymentDue = dateUtils.addDays(date, offset).toISOString().split('T')[0];
@@ -173,7 +172,6 @@ export default {
             const form = this.$refs.ref_form
             const labels = form.querySelectorAll('label')
             let valid = true
-
             labels.forEach(label => {
                 //Validate
                 if(!label.classList.contains("total")){
@@ -211,9 +209,10 @@ export default {
             this.invoiceData = this.$store.state.invoice.data()
             const terms = this.invoiceData.paymentTerms
             const index = this.options.ptOptions.findIndex((option) => option == terms)
-            
+            setTimeout(() => {this.selectOption(index)}, 0)
+        } else{
+            setTimeout(() => {this.selectOption(0)}, 0)
         }
-        setInterval(()=> this.selectOption(0), 0)
     },
 }
 

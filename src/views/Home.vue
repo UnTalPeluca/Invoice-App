@@ -2,6 +2,7 @@
   <div id="home" class="page-wrapper">
     <InvoiceList/>
     <InvoiceCreate/>
+    <InvoiceEdit/>
   </div>
 </template>
 
@@ -9,6 +10,7 @@
 import ActionBar from "@/components/ActionBar.vue"
 import InvoiceList from "@/components/InvoiceList.vue"
 import InvoiceCreate from "@/components/InvoiceCreate.vue"
+import InvoiceEdit from "@/components/InvoiceEdit.vue"
 
 export default {
   name: 'Home',
@@ -21,11 +23,12 @@ export default {
     ActionBar,
     InvoiceList,
     InvoiceCreate,
+    InvoiceEdit,
   },
   created(){
-    
     this.$store.dispatch('setInvoiceCreate', false)
-  }
+    this.$store.dispatch('setShowEdit', false)
+  },
 }
 </script>
 <style lang="scss" scoped>

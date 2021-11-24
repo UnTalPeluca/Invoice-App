@@ -7,7 +7,7 @@
       </transition>
     </router-view>
   </div>
-  <div @click="hideForm" v-if="showBlur" id="bg-blur">
+  <div v-if="showBlur" id="bg-blur">
     <Loading/>
   </div>
 </template>
@@ -34,8 +34,6 @@ export default{
       this.$store.dispatch('setShowEdit', false)
       this.$store.dispatch('setInvoiceCreate', false)
     }
-  },
-  created() {
   },
   watch: {
   '$store.state.blur': function() {

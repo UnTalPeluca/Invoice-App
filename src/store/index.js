@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import Firebase from '@/firebase/firebaseinit'
-import { collection, doc, setDoc, getDocs, deleteDoc, getDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
 import router from '@/router'
 
 export default createStore({
@@ -40,21 +40,30 @@ export default createStore({
   },  
 
   actions: {
-
     // Get data from invoices list
-    async fetchInvoice({ commit, state }, id, reload) {
+    async fetchInvoice({ commit, state }, {id, reload}) {
       commit('SET_LOADING', true)
       commit('SET_BLUR', true)
-      if(reload){
-        const existingInvoice = state.invoices.find(invoice => invoice.id === id)
-        commit('SET_INVOICE', existingInvoice)
-      } else{
+      const existingInvoice = state.invoices.find(invoice => invoice.id === id)
+      if(reload) {
         const docRef = doc(Firebase.db, "invoice", id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           commit('SET_INVOICE', docSnap)
         } else {
           console.log("No such document!");
+        }
+      } else {
+        if(existingInvoice){
+          commit('SET_INVOICE', existingInvoice)
+        } else{
+          const docRef = doc(Firebase.db, "invoice", id);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            commit('SET_INVOICE', docSnap)
+          } else {
+            console.log("No such document!");
+          }
         }
       }
       commit('SET_LOADING', false)
@@ -66,7 +75,7 @@ export default createStore({
       commit('SET_BLUR', true)
       try{
         const result = []
-        const fetch = await (await getDocs(collection(Firebase.db, "invoice")))
+        const fetch = await (getDocs(collection(Firebase.db, "invoice")))
         fetch.forEach(res =>{
           result.push(res)
         })
@@ -85,16 +94,27 @@ export default createStore({
       data.status = status
       try{
         await setDoc(doc(Firebase.db, "invoice", id), data )
+        this.dispatch('fetchInvoices')
       } 
       catch (e) {
         console.error("Error reading document: ", e)
       }
-      commit('SET_LOADING', false)
-      commit('SET_BLUR', false)
-      router.push("/")
+    },
+    //Update Invoice
+    async updateInvoice({ commit }, {id, data, status}) {
+      commit('SET_LOADING', true)
+      commit('SET_BLUR', true)
+      data.status = status
+      try{
+        await setDoc(doc(Firebase.db, "invoice", id), data )
+      } 
+      catch (e) {
+        console.error("Error reading document: ", e)
+      }
+      this.dispatch('fetchInvoice', {id: id, reload:true})
     },
     //Delete doc on firebase
-    async deleteInvoice({ commit }, {id}) {
+    async deleteInvoice({ commit }, {id, draft}) {
       commit('SET_LOADING', true)
       commit('SET_BLUR', true)
       try{
@@ -105,7 +125,11 @@ export default createStore({
       }
       commit('SET_LOADING', false)
       commit('SET_BLUR', false)
-      router.push("/")
+      if(draft) {
+        this.dispatch('fetchInvoices')
+      } else{
+        router.push('/')
+      }
     },
     //Invoice Toogles
     setInvoiceCreate({ commit }, value) {

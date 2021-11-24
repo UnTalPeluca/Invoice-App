@@ -1,12 +1,12 @@
 <template>
-    <div id="invoice-details" class="page-wrapper">
+    <div v-if="invoice" id="invoice-details" class="page-wrapper">
         <router-link :to="{ name: 'Home' }">
             <div class="back">
                 <i class="arrow left"></i>
                 <span class="bold">Go Back</span>
             </div>
         </router-link>
-        <div class="status-wrapper">
+        <div  class="status-wrapper">
             <p>Status</p>
             <div class="state" :class="invoice.status">
                 <p class="bold">{{invoice.status}}</p>
@@ -96,33 +96,36 @@ import InvoiceEdit from "@/components/InvoiceEdit.vue"
 
 export default {
     components:{
-        InvoiceEdit
+        InvoiceEdit,
     },
     data(){
         return{
             dateUtils,
+            invoice: false,
         }
     },
     props: ['id'],
     created(){
-        this.$store.dispatch('fetchInvoice', this.id, true)
         this.$store.dispatch('setShowEdit', false)
+        this.$store.dispatch('fetchInvoice', {id:this.id, reload:false})
+    },
+    watch: {
+        '$store.state.invoice': function() {
+            this.invoice = this.$store.state.invoice.data()
+        }
     },
     methods:{
         showEdit() {
             this.$store.dispatch('setShowEdit', true)
         },
         markAsPaid() {
-            this.$store.dispatch('postInvoice', {id:this.id, data:this.invoice, status:"paid"})
+            this.$store.dispatch('updateInvoice', {id:this.id, data:this.invoice, status:"paid"})
         },
         deleteI() {
-            this.$store.dispatch('deleteInvoice', {id:this.id})
+            this.$store.dispatch('deleteInvoice', {id:this.id, draft: false})
         }
     },
     computed:{
-        invoice() {
-            return this.$store.state.invoice.data()
-        },
         showFooter() {
             return !this.$store.state.showEdit
         },
