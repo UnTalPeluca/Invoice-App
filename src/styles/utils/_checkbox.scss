@@ -23,7 +23,7 @@
     border-radius: 6px;
 }
 .control:hover input ~ .control_indicator {
-    background: $slightly-desaturated-blue;
+    box-shadow: inset 0px 0px 0px 1px $primary-color;
 }
 .control input:checked ~ .control_indicator {
     background: $primary-color;

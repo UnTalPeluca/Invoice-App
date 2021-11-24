@@ -13,6 +13,10 @@
     "code name"
     "date state"
     "amount state";
+    box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
+    &:hover{
+        box-shadow: inset 0px 0px 0px 1px $primary-color;
+    }
     @include media-up(md){
         display: grid; 
         grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 20px; 

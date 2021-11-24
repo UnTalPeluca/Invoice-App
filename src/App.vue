@@ -17,24 +17,36 @@ import NavBar from "@/layout/NavBar.vue"
 import Loading from "@/components/Loading.vue"
 
 export default{
+  data() {
+    return{
+      blur: Boolean
+    }
+  },
   components:{
     NavBar,
     Loading
   },
   computed:{
     showBlur() {
-      return this.$store.state.blur
+      return this.blur
     },
     hideForm() {
-      console.log("jejejeje")
       this.$store.dispatch('setShowEdit', false)
       this.$store.dispatch('setInvoiceCreate', false)
     }
   },
+  created() {
+  },
+  watch: {
+  '$store.state.blur': function() {
+    this.blur = this.$store.state.blur
+  }
+}
 
 }
 </script>
 
 <style lang="scss">
 @import '@/styles/_app.scss';
+
 </style>

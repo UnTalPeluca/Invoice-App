@@ -32,6 +32,8 @@ export default {
         send() {
             if(this.$refs.ref_create_form.validateForm()){
                 this.$store.dispatch('postInvoice', {id:uid(), data: this.$refs.ref_create_form.invoiceData, status:"pending"})
+                this.hideInvoiceCreate()
+                this.$store.dispatch('fetchInvoices')
             }
         },
         saveDraft() {

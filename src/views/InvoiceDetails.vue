@@ -105,7 +105,7 @@ export default {
     },
     props: ['id'],
     created(){
-        this.$store.dispatch('fetchInvoice', this.id)
+        this.$store.dispatch('fetchInvoice', this.id, true)
         this.$store.dispatch('setShowEdit', false)
     },
     methods:{
@@ -116,7 +116,6 @@ export default {
             this.$store.dispatch('postInvoice', {id:this.id, data:this.invoice, status:"paid"})
         },
         deleteI() {
-            console.log("delete")
             this.$store.dispatch('deleteInvoice', {id:this.id})
         }
     },

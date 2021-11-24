@@ -5,9 +5,9 @@
     }
 }
 .invoice-list-wrapper{
-    padding-top: 32px;
+    padding: 32px 0;
     @include media-up(md) {
-        padding-top: 60px;
+        padding: 60px 0;
     }
     > div{
         display: flex;

@@ -72,11 +72,7 @@ export default {
                         localFilters.push(key)
                     }
                 }
-                if(localFilters.length == 1 & that.$store.state.filteredAmount) {
-                    that.oneInvoiceFilter = localFilters[0]
-                } else{
-                    that.oneInvoiceFilter = ""
-                }
+                that.oneInvoiceFilter = localFilters.length == 1 ? localFilters[0] : "";
             }
             setTimeout(setAmountOfInvoices, 10)
         },

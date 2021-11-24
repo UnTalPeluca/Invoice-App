@@ -5,6 +5,10 @@
     @include media-up(md) {
         padding-bottom: 50px;
     }
+    @include media-up(lg) {
+        padding-left: 103px;
+        box-sizing: content-box;
+    }
 }
 
 //Buttons

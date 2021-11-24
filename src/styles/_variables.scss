@@ -10,8 +10,6 @@ $widths:(
   lg: clamp(672px, 70vw, 810px)
 );
 
-
-
 @mixin media-up($breakpoint) {
   @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
     @content;

@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import Firebase from '@/firebase/firebaseinit'
-import { collection, doc, setDoc, getDocs, deleteDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, deleteDoc, getDoc } from "firebase/firestore";
 import router from '@/router'
 
 export default createStore({
@@ -36,16 +36,27 @@ export default createStore({
     },
     SET_FILTERED_AMOUNT(state, value) {
       state.filteredAmount = value
-    }
+    },
   },  
 
   actions: {
+
     // Get data from invoices list
-    fetchInvoice({ commit, state }, id){
+    async fetchInvoice({ commit, state }, id, reload) {
       commit('SET_LOADING', true)
       commit('SET_BLUR', true)
-      const existingInvoice = state.invoices.find(invoice => invoice.id === id)
-      commit('SET_INVOICE', existingInvoice)
+      if(reload){
+        const existingInvoice = state.invoices.find(invoice => invoice.id === id)
+        commit('SET_INVOICE', existingInvoice)
+      } else{
+        const docRef = doc(Firebase.db, "invoice", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          commit('SET_INVOICE', docSnap)
+        } else {
+          console.log("No such document!");
+        }
+      }
       commit('SET_LOADING', false)
       commit('SET_BLUR', false)
     },
@@ -59,7 +70,6 @@ export default createStore({
         fetch.forEach(res =>{
           result.push(res)
         })
-        console.log(result)
         commit('SET_INVOICES', result)
       } 
       catch (e) {
