@@ -1,4 +1,3 @@
-@import "../_variables";
 
 #invoice-details{
     padding-bottom: 150px;
@@ -54,10 +53,11 @@ button{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $bg-dark-primary;
+    background-color: var(--bg1);
     margin-top: 32px;
     padding: 25px;
     border-radius: 8px;
+    box-shadow: var(--bs);
     @include media-up(md) {
         padding: 25px 32px;
         >p{
@@ -97,10 +97,11 @@ button{
 
 //Invoice Details Section
 .invoice-details {
+    box-shadow: var(--bs);
     margin-top: 16px;
     border-radius: 8px;
     padding: 25px;
-    background-color: $bg-dark-primary;
+    background-color: var(--bg1);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto auto;
@@ -196,7 +197,7 @@ button{
     }
     .amount{
         grid-area:amount;
-        background-color: $bg-dark-paydetails;
+        background-color: var(--bg4);
         border-radius: 8px;
         .list{
             display: none;
@@ -221,6 +222,8 @@ button{
             justify-content: space-between;
             align-items: center;
             padding: 25px;
+            box-shadow: var(--bs);
+            
             @include media-up(md) {
                 padding: 18px 32px;
                 display: grid;
@@ -262,17 +265,19 @@ button{
             }
         }
         .total{
-            background-color: $bg-dark-paytotal;
+            background-color: var(--bg6);
             padding: 25px;
             border-radius: 0 0 8px 8px;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            color: white;
             @include media-up(md) {
                 margin-top: 20px;
             }
             .bold{
                 font-size: 2rem;
+                color: white;
                 &::before{
                     content: "£ ";
                 }

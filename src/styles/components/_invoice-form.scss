@@ -1,13 +1,11 @@
-@import "../_variables";
-
 
 //Input style when autocomplete
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
-    box-shadow: 0 0 0 35px $bg-dark-primary inset !important;
-    -webkit-text-fill-color: white !important;
+    box-shadow: 0 0 0 35px var(--bg3) inset !important;
+    -webkit-text-fill-color: var(--text2) !important;
 }
 
 //Form
@@ -41,7 +39,8 @@ form{
         }
         button{
             padding: 15px;
-            background-color: $bg-dark-primary;
+            background-color: var(--bg4);
+            color: var(--addBtn);
             font-size: 1.2rem;
             width: 100%;
         }
@@ -63,7 +62,7 @@ form{
             }
         }
         label{
-            color: #888EB0;
+            color: var(--text5);
             width: 100%;
             padding-bottom: 20px;
             position: relative;
@@ -119,12 +118,13 @@ form{
             }
             input,select{
                 display: block;
-                background-color: $bg-dark-primary;
-                border: 1px solid $bg-dark-paydetails;                
+                background-color: var(--bg1);
+                border: 1px solid var(--bd1);                
                 border-radius: 4px;
                 padding: 16px;
                 margin-top: 10px;
-                color: white;
+                color: var(--text4);
+                font-weight: bold;
                 width: 100%;
                 outline: none;
                 &:focus,&:active,&:hover{
@@ -142,13 +142,20 @@ form{
         .option-box{
             height: 0;
             position: relative;
+            width: 100%;
             top: -10px;
             z-index: 1;
-            width: 100%;
+            color: var(--text4);
+            font-weight: bold;;
+            @include media-up(md){
+                width: 47.5%;
+                margin-left: auto;
+            }
             .wrapper{
-                background-color: $bg-dark-primary;
+                background-color: var(--bg1);
                 border-radius: 8px;
                 cursor: pointer;
+                box-shadow: var(--bs1);
                 p{
                     padding: 16px;
                     border-bottom: 1px solid rgba(0,0,0,0.15);
@@ -183,7 +190,9 @@ label[for="to-country"]{
 }
 label[for="to-date"],
 label[for="to-terms"]{
-    width: 47.5%;
+    @include media-up(md){
+        width: 47.5%;
+    }
 }
 
 //Item List
@@ -281,7 +290,8 @@ label[for="to-terms"]{
                 width: 17.5%;
             }
             input{
-                background-color: $bg-dark-secondary;
+                background: none;
+                color: $color-light-text;
                 border: none;
             }
         }

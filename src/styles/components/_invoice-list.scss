@@ -1,8 +1,7 @@
-@import "../_variables";
+
 #invoice-list{
     @include media-up(lg) {
         margin-left: $header-md;
-
     }
 }
 .invoice-list-wrapper{

@@ -1,6 +1,6 @@
-@import "../_variables";
+
 #nav-bar{
-    background-color: #1E2139;
+    background-color: var(--bg5);
     display: flex;
     justify-content: space-between;
     position: fixed;

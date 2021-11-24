@@ -1,4 +1,4 @@
-@import "../_variables";
+
 @import "../utils/checkbox";
 #action-bar,
 #left-header,
@@ -116,6 +116,7 @@
         }
     }
     .bold{
+        color: white;
         @include media-up(md){
             padding-left: 10px;
             &::after{
@@ -127,7 +128,7 @@
 #filter-nav{
     position: relative;
     ul{
-        background-color: $bg-dark-primary;
+        background-color: var(--bg1);
         list-style-type: none;
         position: absolute;
         z-index: 1;

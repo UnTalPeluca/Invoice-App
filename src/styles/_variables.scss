@@ -70,3 +70,47 @@ $btn-dark-hover:#FFFFFF;
     md: 616px,
     lg: 720px
   );
+
+  //dark mode
+:root{ 
+  --bg: #{$bg-light-primary};
+  --bg1: #{$bg-light-secondary};
+  --bg2: white;
+  --bg3: #{$bg-light-primary};
+  --bg4: #{$bg-light-paydetails};
+  --bg5: #{$bg-light-paytotal};
+  --bg6: #{$bg-light-paytotal};
+
+  --bs: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
+  --bs1: 0 10px 20px 0 rgba(72,84,159, 0.25);
+
+  --bd1: #{$color-dark-text};
+
+  --text1: #{$color-light-text};
+  --text2: #{$color-light-title};
+  --text3: #{$color-light-name};
+  --text4: #0C0E16;
+  --text5: #{$slightly-desaturated-blue};
+
+  --addBtn: #{$slightly-desaturated-blue};
+
+  &.dark{
+    --bg: #{$bg-dark-secondary};
+    --bg1: #{$bg-dark-primary};
+    --bg2: #{$bg-dark-secondary};
+    --bg3: #{$bg-dark-primary};
+    --bg4: #{$btn-dark};
+    --bg5: #{$bg-dark-primary};
+    --bg6: #{$bg-dark-paytotal};
+
+    --bd1: #{$bg-dark-paydetails};
+
+    --text1: #{$color-dark-text};
+    --text2: #{$color-dark-title};
+    --text3: #{$color-light-name};
+    --text4: white;
+    --text5: #{$color-light-text};
+
+    --addBtn: #{$color-light-text};
+  }
+}
