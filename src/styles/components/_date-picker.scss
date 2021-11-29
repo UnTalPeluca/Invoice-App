@@ -24,7 +24,7 @@ input{
 
 .date-picker{
     position: relative;
-    color: $color-dark-text;
+    color: var(--text2);
     font-weight: bold;
     svg{
         position: absolute;
@@ -35,12 +35,12 @@ input{
     .dp-container{
         border-radius: 8px;
         padding: 25px;
-        background-color: $bg-dark-paydetails;
+        background-color: var(--bg1);
         top: 60px;
         position: absolute;
         width: 100%;
         z-index: 1;
-        box-shadow: 0 10px 20px 0 rgba(0,0,0,0.25);
+        box-shadow: var(--bs1);
         .dp-selected-date{
             display: flex;
             justify-content: space-between;
@@ -73,7 +73,7 @@ input{
                 }
             }
             .dp-day-fill{
-                color: #343854;
+                color: var(--text6);
             }
         }
     }

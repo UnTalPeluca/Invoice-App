@@ -12,6 +12,9 @@
 html {
     font-size: 62.5%;
 }
+#app{
+    overflow-x: hidden;
+}
 body{
     background-color: var(--bg);
     color: var(--text1);
@@ -25,6 +28,7 @@ body{
         right: 0;
         margin: auto;
         padding-top: 110px;
+        overflow-x: hidden;
         @include media-up(md) {
             width: map-get($widths, md);
             padding-top: 135px;
@@ -50,6 +54,7 @@ body{
     }
     #view-wrapper{
         margin: auto;
+        overflow-x: hidden;
     }
     .paid{
         background-color: $bg-paid;
@@ -64,9 +69,9 @@ body{
         }
     }
     .draft{
-        background-color: $bg-draft;
+        background-color: var(--bg-draft);
         .bold{
-            color: $color-draft;
+            color: var(--text-draft);
         }
     }
     .bold{

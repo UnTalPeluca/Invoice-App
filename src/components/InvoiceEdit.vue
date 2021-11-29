@@ -9,10 +9,17 @@
                 <h2 class="bold">Edit <span class="id">{{this.invoice.id}}</span></h2>
                 <InvoiceForm edit="true" ref="ref_edit_form"/>
                 <div class="footer">
-                    <button v-if="isDraft" @click="deleteDraft" class="delete">Delete</button>
-                    <button class="cancel" @click="hide">Cancel</button>
-                    <button :class="isDraft ? 'save-draft' : 'save'" @click="save">Save Changes</button>
-                    <button v-if="isDraft" class="save" @click="send">Save & Send</button>
+                    <div v-if="isDraft" class="isDraft">
+                        <button class="cancel" @click="hide">Cancel</button>
+                        <button @click="deleteDraft" class="delete">Delete</button>
+                        <button class="save-draft" @click="save">Save</button>
+                        <button class="send-draft" @click="send">Send</button>
+                    </div>
+                    <div v-else>
+                        <button class="cancel" @click="hide">Cancel</button>
+                        <button class="save" @click="save">Save Changes</button>
+                        <button v-if="isDraft" class="send-draft" @click="send">Save & Send</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,8 +50,7 @@ export default {
             this.hide()
         },
         deleteDraft() {
-            this.$store.dispatch('deleteInvoice', {id:this.invoice.id, draft: true})
-            this.hide()
+            this.$store.dispatch('setShowDelete', true)
         }
     },
     computed: {

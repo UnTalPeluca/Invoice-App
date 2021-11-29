@@ -11,6 +11,7 @@ import ActionBar from "@/components/ActionBar.vue"
 import InvoiceList from "@/components/InvoiceList.vue"
 import InvoiceCreate from "@/components/InvoiceCreate.vue"
 import InvoiceEdit from "@/components/InvoiceEdit.vue"
+import DeleteInvoice from "@/components/DeleteInvoice.vue"
 
 export default {
   name: 'Home',
@@ -24,10 +25,12 @@ export default {
     InvoiceList,
     InvoiceCreate,
     InvoiceEdit,
+    DeleteInvoice,
   },
   created(){
     this.$store.dispatch('setInvoiceCreate', false)
     this.$store.dispatch('setShowEdit', false)
+    this.$store.dispatch('setShowDelete', false)
   },
 }
 </script>

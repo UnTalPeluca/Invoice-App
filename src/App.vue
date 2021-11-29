@@ -10,11 +10,13 @@
   <div v-if="showBlur" id="bg-blur">
     <Loading/>
   </div>
+  <DeleteInvoice/>
 </template>
 
 <script>
 import NavBar from "@/layout/NavBar.vue"
 import Loading from "@/components/Loading.vue"
+import DeleteInvoice from "@/components/DeleteInvoice.vue"
 
 export default{
   data() {
@@ -24,16 +26,13 @@ export default{
   },
   components:{
     NavBar,
-    Loading
+    Loading,
+    DeleteInvoice
   },
   computed:{
     showBlur() {
       return this.blur
     },
-    hideForm() {
-      this.$store.dispatch('setShowEdit', false)
-      this.$store.dispatch('setInvoiceCreate', false)
-    }
   },
   watch: {
   '$store.state.blur': function() {

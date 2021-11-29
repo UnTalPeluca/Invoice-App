@@ -71,35 +71,94 @@
         @include media-up(lg) {
             padding-left: 56px;
         }
+        >div{
+            display: flex;
+            width: 100%;
+        }
         button{
             font-size: 1.2rem;
-            padding: 17px 17px;
+            padding: 10px 14px;
+            height: 48px;
             @include media-up(md) {
                 padding: 17px 20px;
             }
             &.discard{
-                background-color: $btn-dark;
+                background-color: var(--discardBtn);
+                color: var(--textCancel);
+                &:hover{
+                    background-color: var(--discardBtnHover);
+                    color: $slightly-desaturated-blue;
+                }
             }
             &.save-draft{
-                background-color: $bg-light-paytotal;
+                background-color: var(--saveDraftBtn);
+                color: var(--textCancel);
+                &:hover{
+                    background-color: var(--saveDraftBtnHover);
+                }
                 @include media-up(md) {
                     margin-left: auto;
-                    margin-right: 8px;
+                    margin-right: 10px;
                 }
             }
             &.send{
-                background-color: $primary-color;
+                background-color: $btn-purple;
+                &:hover{
+                    background-color: $btn-purple-hover;
+                }
             }
             &.save{
-                background-color: $primary-color;
+                background-color: $btn-purple;
                 margin-left: 10px;
+                &:hover{
+                    background-color: $btn-purple-hover;
+                }
+            }
+            &.send-draft{
+                background-color: $btn-purple;
+                margin-left: 10px;
+                &:hover{
+                    background-color: $btn-purple-hover;
+                }
             }
             &.cancel{
                 margin-left: auto;
-                background-color: $bg-dark-paydetails;
+                background-color: var(--bg4);
+                color: var(--textCancel);
+                &:hover{
+                    background-color: var(--bg4Hover);
+                }
             }
             &.delete{
                 background-color: $btn-red;
+                &:hover{
+                    background-color: $btn-red-hover;
+                }
+            }
+        }
+        .isDraft{
+            gap: 10px;
+            button{
+                &.send-draft{
+                    margin: 0;
+                    &::before{
+                        content: "Save & ";
+                    }
+                }
+                &.cancel{
+                    margin: 0
+                }
+                &.delete{
+                    margin-left: auto;
+                }
+                &.save-draft{
+                    @include media-up(md) {
+                        margin: 0;
+                        &::after{
+                            content: " Changes";
+                        }
+                    }
+                }
             }
         }
     }

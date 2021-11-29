@@ -68,8 +68,6 @@ export default {
         },
         e_FormatDate(){
             const date = `${this.year}-${this.month}-${this.day}`
-            console.log(date)
-            console.log("queeee")
             this.$emit("getFormatDate", date)
         }
     },

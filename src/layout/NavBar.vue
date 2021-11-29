@@ -14,29 +14,31 @@
 
 <script>
 export default {
+    data() {
+        return {
+            icon: 'icon-moon.svg'
+        }
+    },
     methods: {
         toogleDarkMode() {
-
-            if(localStorage.getItem('darkMode') == 'true'){
+            if(localStorage.getItem('darkMode') === 'true'){
                 localStorage.setItem('darkMode', 'false');
                 document.querySelector('html').classList.remove('dark')
             } else{
                 localStorage.setItem('darkMode', 'true');
                 document.querySelector('html').classList.add('dark')
             }
+            this.icon = localStorage.getItem('darkMode') == 'true' ? 'icon-moon.svg' : 'icon-sun.svg'
         },
-    },
-    computed:{
-        icon(){
-            console.log("kiee")
-            return localStorage.getItem('darkMode') == 'true' ? 'icon-moon.svg' : 'icon-sun.svg'
-        }
     },
     created() {
         if(!localStorage.getItem('darkMode')){
             localStorage.setItem('darkMode', 'true')
             document.querySelector('html').classList.add('dark')
-        } 
+        } else if (localStorage.getItem('darkMode') === 'true'){
+            document.querySelector('html').classList.add('dark')
+        }
+        this.icon = localStorage.getItem('darkMode') == 'true' ? 'icon-moon.svg' : 'icon-sun.svg'
     }
 }
 </script>

@@ -8,7 +8,7 @@
             <p class="bold">Filter</p>
             <i class="arrow" :class="isFilterOpen ? 'up':'down'"></i>
         </div>
-        <div id="filter-nav" v-show="isFilterOpen">
+        <div ref="ref_nav" id="filter-nav" v-show="isFilterOpen">
             <ul>
                 <li>
                     <label class="control control-checkbox bold">
@@ -56,6 +56,11 @@ export default {
             oneInvoiceFilter: ""
         }
     },
+    watch: {
+        '$store.state.filteredAmount': function() {
+            this.invoicesAmount = this.$store.state.filteredAmount
+        }
+    },
     methods:{
         newInvoice() {
             this.$store.dispatch('setInvoiceCreate', true)
@@ -89,7 +94,16 @@ export default {
         }
     },
     created() {
-        setInterval(() =>{this.invoicesAmount = this.$store.state.filteredAmount}, 0)
+        document.addEventListener('click', (e) =>{
+            const filterOptions = this.$refs.ref_nav
+            const filter = this.$refs.filter
+            if(filter !== null) {
+                if(this.isFilterOpen & (!filter.contains(e.target)) & !filterOptions.contains(e.target)){
+                    this.isFilterOpen = false
+                }
+            }
+        })
+        this.invoicesAmount = this.$store.state.filteredAmount
     },
 }
 </script>

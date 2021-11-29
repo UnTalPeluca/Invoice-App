@@ -43,6 +43,9 @@ form{
             color: var(--addBtn);
             font-size: 1.2rem;
             width: 100%;
+            &:hover{
+                background-color: var(--bg4Hover);
+            }
         }
     }
     fieldset{
@@ -240,12 +243,15 @@ label[for="to-terms"]{
     }
     .delete-item{
         cursor: pointer;
-        
+        &:hover{
+            filter: invert(0.5) sepia(1) saturate(25) hue-rotate(330deg);
+        }
     }
     label{
         &:nth-child(1){
             &::before{
-                content:"Item Name";   
+                content:""!important;  
+                position: relative!important; 
                 @include media-up(md) {
                     content:""
                 }

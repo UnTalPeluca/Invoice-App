@@ -19,10 +19,10 @@ button{
         border: none;
     }
     &.edit{
-        background-color: $btn-dark;
+        background-color: var(--editBtn);
+        color: var(--textEdit);
         &:hover{
-            background-color: $btn-dark-hover;
-            color: $color-dark-text;
+            background-color: var(--editBtnHover);
         }
     }
     &.delete{
@@ -199,6 +199,7 @@ button{
         grid-area:amount;
         background-color: var(--bg4);
         border-radius: 8px;
+        box-shadow: var(--bs);
         .list{
             display: none;
             padding: 32px 32px 20px 32px;
@@ -221,9 +222,7 @@ button{
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding: 25px;
-            box-shadow: var(--bs);
-            
+            padding: 25px;            
             @include media-up(md) {
                 padding: 18px 32px;
                 display: grid;

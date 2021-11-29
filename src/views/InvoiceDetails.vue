@@ -108,6 +108,7 @@ export default {
     created(){
         this.$store.dispatch('setShowEdit', false)
         this.$store.dispatch('fetchInvoice', {id:this.id, reload:false})
+        this.$store.dispatch('setShowDelete', false)
     },
     watch: {
         '$store.state.invoice': function() {
@@ -122,7 +123,7 @@ export default {
             this.$store.dispatch('updateInvoice', {id:this.id, data:this.invoice, status:"paid"})
         },
         deleteI() {
-            this.$store.dispatch('deleteInvoice', {id:this.id, draft: false})
+            this.$store.dispatch('setShowDelete', true)
         }
     },
     computed:{

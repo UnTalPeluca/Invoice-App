@@ -5,7 +5,7 @@ $breakpoints:(
   lg: 1024px,
 );
 $widths:(
-  sm: 375px,
+  sm: 325px,
   md: clamp(575px, 80vw, 672px),
   lg: clamp(672px, 70vw, 810px)
 );
@@ -78,8 +78,10 @@ $btn-dark-hover:#FFFFFF;
   --bg2: white;
   --bg3: #{$bg-light-primary};
   --bg4: #{$bg-light-paydetails};
+  --bg4Hover: #{$color-dark-text};
   --bg5: #{$bg-light-paytotal};
   --bg6: #{$bg-light-paytotal};
+  --bg-draft: rgba(55, 59, 83, 0.05);
 
   --bs: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
   --bs1: 0 10px 20px 0 rgba(72,84,159, 0.25);
@@ -89,20 +91,32 @@ $btn-dark-hover:#FFFFFF;
   --text1: #{$color-light-text};
   --text2: #{$color-light-title};
   --text3: #{$color-light-name};
-  --text4: #0C0E16;
+  --text4: #{$bg-dark-paytotal};
   --text5: #{$slightly-desaturated-blue};
+  --text6: rgba(12, 14, 22, 0.1);
+  --text7: #FF0000;
+  --text8: #FF0000;
+  --textEdit: #{$slightly-desaturated-blue};
+  --textCancel: #{$slightly-desaturated-blue};
+  --text-draft: #{$bg-light-paytotal};
 
   --addBtn: #{$slightly-desaturated-blue};
-
+  --editBtn: #{$bg-light-paydetails};
+  --editBtnHover: #{$color-dark-text};
+  --saveDraftBtn: #{$bg-light-paytotal};
+  --saveDraftBtnHover: #{$bg-dark-paytotal};
+  --discardBtn: #{$bg-light-paydetails};
+  --discardBtnHover: #{$bg-light-paydetails};
   &.dark{
     --bg: #{$bg-dark-secondary};
     --bg1: #{$bg-dark-primary};
     --bg2: #{$bg-dark-secondary};
     --bg3: #{$bg-dark-primary};
     --bg4: #{$btn-dark};
+    --bg4Hover: #{$bg-light-paytotal};
     --bg5: #{$bg-dark-primary};
     --bg6: #{$bg-dark-paytotal};
-
+    --bg-draft: rgba(223, 227, 250, 0.05);
     --bd1: #{$bg-dark-paydetails};
 
     --text1: #{$color-dark-text};
@@ -110,7 +124,19 @@ $btn-dark-hover:#FFFFFF;
     --text3: #{$color-light-name};
     --text4: white;
     --text5: #{$color-light-text};
+    --text6: rgba(223, 227, 250, 0.1);
+    --text7: #{$color-dark-text};
+    --text8: #{$slightly-desaturated-blue};
+    --textEdit: #{$color-dark-text};
+    --textCancel: white;
+    --text-draft: #{$color-dark-text};
 
     --addBtn: #{$color-light-text};
+    --editBtn: #{$bg-dark-paydetails};
+    --editBtnHover: white;
+    --saveDraftBtn: #{$bg-light-paytotal};
+    --saveDraftBtnHover: #{$bg-dark-paydetails};
+    --discardBtn: #{$bg-dark-paydetails};
+    --discardBtnHover: white;
   }
 }

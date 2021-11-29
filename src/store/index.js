@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import Firebase from '@/firebase/firebaseinit'
-import { collection, doc, setDoc, getDocs, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, deleteDoc, getDoc } from "firebase/firestore";
 import router from '@/router'
 
 export default createStore({
@@ -13,6 +13,7 @@ export default createStore({
     loading: true,
     blur: true,
     filteredAmount: 0,
+    showDelete: false,
   },
 
   mutations: {
@@ -36,6 +37,9 @@ export default createStore({
     },
     SET_FILTERED_AMOUNT(state, value) {
       state.filteredAmount = value
+    },
+    SET_SHOWDELETE(state, value) {
+      state.showDelete = value
     },
   },  
 
@@ -114,11 +118,15 @@ export default createStore({
       this.dispatch('fetchInvoice', {id: id, reload:true})
     },
     //Delete doc on firebase
-    async deleteInvoice({ commit }, {id, draft}) {
+    async deleteInvoice({ commit, state }) {
+      const id = state.invoice.id
+      const draft = state.invoice.data().status === 'draft'
       commit('SET_LOADING', true)
       commit('SET_BLUR', true)
       try{
         await deleteDoc(doc(Firebase.db, "invoice", id))
+        this.dispatch('setShowEdit', false)
+        this.dispatch('setShowDelete', false)
       } 
       catch (e) {
         console.error("Error deleating document: ", e)
@@ -144,11 +152,17 @@ export default createStore({
       commit('SET_SHOWEDIT', value)
       commit('SET_BLUR', value)
     },
-    setInvoiceAmount({commit}, value) {
+    setInvoiceAmount({ commit }, value) {
       commit('SET_FILTERED_AMOUNT', value)
+    },
+    setShowDelete({ commit, state }, value) {
+      commit('SET_SHOWDELETE', value)
+      commit('SET_BLUR', false)
+      if(Object.keys(state.invoice).length !== 0) {
+        if(value === false & state.invoice.data().status === 'draft') {
+          commit('SET_BLUR', true)
+        }
+      }
     }
   },
-  modules: {
-
-  }
 })

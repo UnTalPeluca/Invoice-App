@@ -1,0 +1,52 @@
+.blur{
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+#delete-invoice {
+    width: map-get($widths, sm );
+    padding: 32px 25px;
+    background-color: var(--bg1);
+    border-radius: 8px;
+    @include media-up(md){
+        width: 480px;
+        padding: 48px 48px;
+    }
+    p {
+        color: $color-light-text;
+        padding-top: 18px;
+        padding-bottom: 24px;
+    }
+    .bold {
+        padding: 0;
+        font-size: 2rem;
+        color:var(--text2)
+    }
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        .cancel {
+            background-color: var(--bg4);
+            color: var(--textCancel);
+            padding: 16px 21px;
+            &:hover{
+                background-color: var(--bg4Hover);
+            }
+        }
+        .delete {
+            background-color: $btn-red;
+            padding: 16px 21px;
+            &:hover{
+                background-color: $btn-red-hover;
+            }
+        }
+    }
+}

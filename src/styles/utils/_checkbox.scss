@@ -1,6 +1,5 @@
 
 .control {
-    font-family: arial;
     display: block;
     position: relative;
     padding-left: 30px;
@@ -19,11 +18,11 @@
     left: 0;
     height: 20px;
     width: 20px;
-    background: $bg-dark-paydetails;
+    background: var(--bd1);
     border-radius: 6px;
 }
 .control:hover input ~ .control_indicator {
-    box-shadow: inset 0px 0px 0px 1px $primary-color;
+    box-shadow: inset 0px 0px 0px 2px $primary-color;
 }
 .control input:checked ~ .control_indicator {
     background: $primary-color;

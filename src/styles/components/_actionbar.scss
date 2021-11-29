@@ -141,6 +141,9 @@
         border-radius: 6px;
         height: 128px;
         font-size: 1.2rem;
+        @include media-up(md){
+            left: -190px;
+        }
     }
 }
 
