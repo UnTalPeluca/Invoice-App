@@ -49,5 +49,5 @@ Users should be able to:
 
 ## Author
 
-- Github - [UnTalPeluca](https://github.com/UnTalPeluca)
+- Github - [@UnTalPeluca](https://github.com/UnTalPeluca)
 - Frontend Mentor - [@UnTalPeluca](https://www.frontendmentor.io/profile/UnTalPeluca)
