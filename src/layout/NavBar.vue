@@ -7,7 +7,7 @@
             <img @click="toogleDarkMode" id="mode-img" :src="require('@/assets/' + icon )" alt="">
         </div>
         <div class="img-wrapper">
-            <img id="avatar" src="@/assets/image-avatar.jpg" alt="">
+            <img @click="goToGithub" id="avatar" src="@/assets/image-avatar.jpg" alt="">
         </div>
     </div>
 </template>
@@ -30,6 +30,9 @@ export default {
             }
             this.icon = localStorage.getItem('darkMode') == 'true' ? 'icon-moon.svg' : 'icon-sun.svg'
         },
+        goToGithub() {
+            location.href = 'https://github.com/UnTalPeluca'
+        }
     },
     created() {
         if(!localStorage.getItem('darkMode')){
